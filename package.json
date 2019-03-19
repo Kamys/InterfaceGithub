@@ -1,0 +1,37 @@
+{
+  "name": "interfacegithub",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "webpack-dev-server --mode=development"
+  },
+  "author": "Nikita Kamyshenko",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.0",
+    "redux-act": "^1.7.4",
+    "redux-saga": "^0.16.0"
+  },
+  "devDependencies": {
+    "@types/node": "^11.11.3",
+    "@types/react": "^16.4.6",
+    "@types/react-dom": "^16.0.6",
+    "@types/react-redux": "^7.0.5",
+    "awesome-typescript-loader": "^5.2.0",
+    "css-loader": "^2.1.1",
+    "eslint": "^5.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "redux-devtools-extension": "^2.13.5",
+    "source-map-loader": "^0.2.4",
+    "style-loader": "^0.23.0",
+    "tslint": "^5.10.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.0.1",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
