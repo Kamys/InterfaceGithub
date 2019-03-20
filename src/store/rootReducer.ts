@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
+import issue, { IStateIssues } from 'src/issue/reducer';
 
-export interface IState {
+export interface IRootState {
+	issue: IStateIssues;
 }
 
 const appReducers = combineReducers({
- app: () => ({}),
+	issue,
 });
 
 export default appReducers;
