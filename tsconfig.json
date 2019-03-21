@@ -20,6 +20,9 @@
         "jsx": "react",
         "moduleResolution": "node",
         "baseUrl": "./",
+        "paths": {
+            "~/*": ["src/*"]
+        },
         "forceConsistentCasingInFileNames": true,
         "noImplicitReturns": true,
         "noImplicitThis": true,

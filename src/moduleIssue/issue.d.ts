@@ -1,0 +1,3 @@
+interface IStateIssues {
+	issues: IIssues[];
+}

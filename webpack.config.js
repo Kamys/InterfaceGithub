@@ -41,7 +41,7 @@ const config = {
 		extensions: ['.js', '.jsx', '.ts', '.tsx'],
 		modules: ['node_modules', sourcePath],
 		alias: {
-			src: sourcePath,
+			'~': sourcePath,
 		},
 	},
 	devServer: {
