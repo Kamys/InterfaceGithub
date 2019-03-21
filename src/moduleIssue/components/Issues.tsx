@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import IssuesList from './IssuesList';
 import actions from '../actions';
+import IssuesSearch from './IssuesSearch';
 
 export interface IState {
 
@@ -29,11 +30,8 @@ class Issues extends Component<IProps & injectProps & injectActions, IState> {
 
 	state: IState = {};
 
-	componentDidMount() {
-		this.props.loadingRequest({
-			userName: 'kamys',
-			projectName: 'actions-preloader',
-		});
+	loadingIssues = searchValue => {
+		this.props.loadingRequest(searchValue);
 	}
 
 	render() {
@@ -42,6 +40,7 @@ class Issues extends Component<IProps & injectProps & injectActions, IState> {
 
 		return (
 			<>
+				<IssuesSearch onSearch={this.loadingIssues}/>
 				<IssuesList issues={ issues }/>
 			</>
 		);
