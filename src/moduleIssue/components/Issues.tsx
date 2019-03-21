@@ -17,6 +17,7 @@ export interface IProps {
 
 const mapStateToProps = (state: IRootState) => ({
 	issues: state.issue.issues,
+	error: state.issue.error,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -36,12 +37,13 @@ class Issues extends Component<IProps & injectProps & injectActions, IState> {
 
 	render() {
 
-		const { issues } = this.props;
+		const { issues, error } = this.props;
 
 		return (
 			<>
 				<IssuesSearch onSearch={this.loadingIssues}/>
-				<IssuesList issues={ issues }/>
+				<IssuesList issues={issues}/>
+				<div>{error}</div>
 			</>
 		);
 	}

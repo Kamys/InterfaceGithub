@@ -5,13 +5,13 @@ import { AxiosResponse } from 'axios';
 import api from '~/api';
 import moduleIssue from '~/moduleIssue';
 
-function* loadingIssues(action: Action<{userName: string, projectName: string}>) {
+function* loadingIssues(action: Action<{ userName: string, projectName: string }>) {
 	try {
-		const {userName, projectName} = action.payload;
+		const { userName, projectName } = action.payload;
 		const response: AxiosResponse = yield call(api.issues.loading, userName, projectName);
 		yield put(moduleIssue.actions.loadingSuccess({ issues: response.data }));
 	} catch (error) {
-		console.log('loadingIssues error: ', error);
+		yield put(moduleIssue.actions.loadingFailure({ error: error.response.data.message }));
 	}
 }
 

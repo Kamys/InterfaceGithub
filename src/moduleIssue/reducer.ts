@@ -4,11 +4,19 @@ import actions from './actions';
 
 const defaultState: IStateIssues = {
 	issues: [],
+	error: '',
 };
 
 const reducer = createReducer({}, defaultState);
 
+reducer.on(actions.loadingRequest, (state, payload) => (defaultState));
+
 reducer.on(actions.loadingSuccess, (state, payload) => ({
+	...state,
+	...payload,
+}));
+
+reducer.on(actions.loadingFailure, (state, payload) => ({
 	...state,
 	...payload,
 }));
