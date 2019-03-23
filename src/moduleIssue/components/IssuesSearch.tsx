@@ -1,6 +1,9 @@
 import { Component } from 'react';
 import * as React from 'react';
 
+import Input from '~/common/Input';
+import styled from 'styled-components';
+
 export interface IState {
 	userName: string;
 	projectName: string;
@@ -10,16 +13,23 @@ export interface IProps {
 	onSearch: (search: IState) => void;
 }
 
-const Input = ({ label, onChange, name }) => (
-	<>
-		<label>{label}</label>
-		<input
-			onChange={onChange}
-			name={name}
-			type='search'
-		/>
-	</>
-);
+const Button = styled.button`
+    border: none;
+    padding: 0.5rem 2rem;
+    text-decoration: none;
+    background: #0069ed;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 17px;
+    margin: 0;
+    text-align: center;
+`;
+
+const Form = styled.form`
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+`;
 
 class IssuesSearch extends Component<IProps, IState> {
 
@@ -41,19 +51,19 @@ class IssuesSearch extends Component<IProps, IState> {
 
 	render() {
 		return (
-			<form onSubmit={this.onSubmit}>
+			<Form onSubmit={this.onSubmit}>
 				<Input
 					onChange={this.onChange}
 					name='userName'
-					label='User name:'
+					label='User name'
 				/>
 				<Input
 					onChange={this.onChange}
 					name='projectName'
-					label='Project name:'
+					label='Project name'
 				/>
-				<button type='submit'>Show issues</button>
-			</form>
+				<Button type='submit'>Show issues</Button>
+			</Form>
 		);
 	}
 }

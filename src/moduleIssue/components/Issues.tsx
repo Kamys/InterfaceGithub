@@ -2,9 +2,10 @@ import { Component } from 'react';
 import * as React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
-import IssuesList from './IssuesList';
 import actions from '../actions';
+import IssuesList from './IssuesList';
 import IssuesSearch from './IssuesSearch';
 
 export interface IState {
@@ -27,6 +28,18 @@ const mapDispatchToProps = dispatch => ({
 type injectProps = ReturnType<typeof mapStateToProps>;
 type injectActions = ReturnType<typeof mapDispatchToProps>;
 
+const Error = styled.div`
+  color: red;
+`;
+
+const Container = styled.div`
+	max-width: 280px;
+	margin: 40px auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
+
 class Issues extends Component<IProps & injectProps & injectActions, IState> {
 
 	state: IState = {};
@@ -41,9 +54,13 @@ class Issues extends Component<IProps & injectProps & injectActions, IState> {
 
 		return (
 			<>
-				<IssuesSearch onSearch={this.loadingIssues}/>
-				<IssuesList issues={issues}/>
-				<div>{error}</div>
+				<Container>
+					<IssuesSearch onSearch={this.loadingIssues}/>
+				</Container>
+				<Container>
+					<IssuesList issues={issues}/>
+					<Error>{error}</Error>
+				</Container>
 			</>
 		);
 	}
