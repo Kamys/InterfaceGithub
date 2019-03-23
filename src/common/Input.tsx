@@ -5,6 +5,7 @@ import styled from 'styled-components';
 interface IProps {
 	label: string;
 	name: string;
+	defaultValue: string;
 	onChange: (event: FormEvent<HTMLInputElement>) => void;
 }
 
@@ -16,14 +17,9 @@ const Search = styled.input`
   border-width: 0 0 2px;
   border-color: #007cb3;
 `;
-const Input = ({ label, onChange, name }: IProps) => (
-	<Search
-		placeholder={label}
-		onChange={onChange}
-		name={name}
-		type='search'
-		required
-	/>
+
+const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
+	<Search {...props}/>
 );
 
 export default Input;

@@ -34,8 +34,8 @@ const Form = styled.form`
 class IssuesSearch extends Component<IProps, IState> {
 
 	state: IState = {
-		projectName: '',
 		userName: '',
+		projectName: '',
 	};
 
 	onChange = event => {
@@ -55,12 +55,16 @@ class IssuesSearch extends Component<IProps, IState> {
 				<Input
 					onChange={this.onChange}
 					name='userName'
-					label='User name'
+					placeholder='User name'
+					value={this.state.userName}
+					required
 				/>
 				<Input
 					onChange={this.onChange}
 					name='projectName'
-					label='Project name'
+					placeholder='Project name'
+					value={this.state.projectName}
+					required
 				/>
 				<Button type='submit'>Show issues</Button>
 			</Form>
