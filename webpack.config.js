@@ -34,6 +34,7 @@ const config = {
 	context: sourcePath,
 	output: {
 		path: outPath,
+		publicPath: '/',
 		filename: '[name].js',
 	},
 	devtool,
@@ -46,6 +47,8 @@ const config = {
 	},
 	devServer: {
 		open: false,
+		publicPath: '/',
+		historyApiFallback: true,
 	},
 	node: {
 		__dirname: false,

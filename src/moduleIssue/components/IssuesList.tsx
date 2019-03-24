@@ -6,9 +6,6 @@ interface IProps {
 	issues: IIssues[];
 }
 
-const List = styled.div`
-`;
-
 const Issue = styled.div`
  display: flex;
  flex-direction: column;
@@ -34,11 +31,11 @@ const IssuesList = (props: IProps) => {
 	const { issues } = props;
 
 	return (
-		<List>
+		<>
 			{
 				issues.map(issue => (
 					<Issue key={issue.number}>
-						<Title target="_blank" href={issue.html_url}>
+						<Title target='_blank' href={issue.html_url}>
 							{issue.title}
 						</Title>
 						<SubText>
@@ -48,7 +45,7 @@ const IssuesList = (props: IProps) => {
 					</Issue>
 				))
 			}
-		</List>
+		</>
 	);
 };
 
