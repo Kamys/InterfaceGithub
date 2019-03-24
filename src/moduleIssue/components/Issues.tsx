@@ -11,13 +11,14 @@ export interface IState {
 
 }
 
-export interface IProps extends RouteComponentProps<IssuesSearchParam> {
+export interface IProps extends RouteComponentProps<IIssuesSearchParam> {
 	render: (issues: IIssues[]) => JSX.Element;
 }
 
 const mapStateToProps = (state: IRootState) => ({
 	issues: state.issue.issues,
 	error: state.issue.error,
+	isLoading: state.issue.isLoading,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -42,19 +43,28 @@ class Issues extends Component<IProps & injectProps & injectActions, IState> {
 		this.props.issuesActions.loadingRequest(searchValue);
 	}
 
-	render() {
+	renderProps = () => {
+		const { issues, error, isLoading, render } = this.props;
 
-		const { issues, error, render } = this.props;
+		if (isLoading) {
+			return <div>Loading...</div>
+		}
+
+		if (error) {
+			return <Error>{error}</Error>
+		}
+
+		return render(issues)
+	}
+
+	render() {
 		const {projectName} = this.props.match.params;
 
 		return (
 			<Mian>
 				<h2>Project: {projectName}</h2>
 				{
-					error &&
-					<Error>{error}</Error>
-					||
-					render(issues)
+					this.renderProps()
 				}
 			</Mian>
 		);

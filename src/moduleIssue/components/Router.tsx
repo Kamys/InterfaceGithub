@@ -45,7 +45,8 @@ class Router extends Component<IProps & injectProps & injectActions, IState> {
 					exact
 					path={ISSUE_PAGE_ROUTE.main}
 					render={(props) => (
-						<Container>
+						<Container column>
+							<h2>Search issues</h2>
 							<IssuesSearch {...props} onSearch={this.loadingIssues}/>
 						</Container>
 					)}

@@ -1,6 +1,10 @@
 interface IStateIssues {
 	issues: IIssues[];
 	error: string;
+	isLoading: boolean;
 }
 
-type IssuesSearchParam = { userName: string, projectName: string };
+interface IIssuesSearchParam {
+	userName: string;
+	projectName: string;
+}

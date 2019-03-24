@@ -7,7 +7,7 @@ import api from '~/api';
 import moduleIssue from '~/moduleIssue';
 import { ISSUE_PAGE_ROUTE } from '~/moduleIssue/constants';
 
-function* loadingIssues(action: Action<IssuesSearchParam>) {
+function* loadingIssues(action: Action<IIssuesSearchParam>) {
 	try {
 		const { userName, projectName } = action.payload;
 		const response: AxiosResponse = yield call(api.issues.loading, userName, projectName);
@@ -18,7 +18,7 @@ function* loadingIssues(action: Action<IssuesSearchParam>) {
 	}
 }
 
-function* search(action: Action<IssuesSearchParam>) {
+function* search(action: Action<IIssuesSearchParam>) {
 	const { userName, projectName } = action.payload;
 	yield put(push(ISSUE_PAGE_ROUTE.goIssues(userName, projectName)));
 }
