@@ -1,5 +1,6 @@
 import axios, { AxiosPromise } from 'axios';
 
+// TODO: move in .env
 const baseURL = 'https://api.github.com';
 
 const instance = axios.create({
