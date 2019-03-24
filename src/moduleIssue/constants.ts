@@ -1,5 +1,5 @@
 export const ISSUE_PAGE_ROUTE = {
-	main: '/search-issue',
-	issues: '/search-issue/:username/:projectName',
-	goIssues: (username, projectName) => `/search-issue/${username}/${projectName}`,
+	main: '/',
+	issues: '/:userName/:projectName/issue',
+	goIssues: (username, projectName) => `/${username}/${projectName}/issue`,
 };

@@ -1,23 +1,18 @@
-import { Component, PropsWithRef } from 'react';
+import { Component, ElementType } from 'react';
 import * as React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { Route, Link } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 
-import Container from '~/common/Container';
 import actions from '../actions';
-import { ISSUE_PAGE_ROUTE } from '../constants';
-import IssuesList from './IssuesList';
-import IssuesSearch from './IssuesSearch';
-import { RouteComponentProps } from 'react-router';
 
 export interface IState {
 
 }
 
 export interface IProps extends RouteComponentProps<IssuesSearchParam> {
-	render: (issues: IIssues[]) => React.Component;
+	render: (issues: IIssues[]) => JSX.Element;
 }
 
 const mapStateToProps = (state: IRootState) => ({
@@ -31,6 +26,10 @@ const mapDispatchToProps = dispatch => ({
 
 type injectProps = ReturnType<typeof mapStateToProps>;
 type injectActions = ReturnType<typeof mapDispatchToProps>;
+
+const Mian = styled.div`
+  margin: 1rem;
+`;
 
 const Error = styled.div`
   color: red;
@@ -46,12 +45,19 @@ class Issues extends Component<IProps & injectProps & injectActions, IState> {
 	render() {
 
 		const { issues, error, render } = this.props;
+		const {projectName} = this.props.match.params;
 
-		if (error) {
-			return <Error>{error}</Error>;
-		}
-
-		return render(issues);
+		return (
+			<Mian>
+				<h2>Project: {projectName}</h2>
+				{
+					error &&
+					<Error>{error}</Error>
+					||
+					render(issues)
+				}
+			</Mian>
+		);
 	}
 }
 

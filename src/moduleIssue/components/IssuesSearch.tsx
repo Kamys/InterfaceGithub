@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import Input from '~/common/Input';
 import styled from 'styled-components';
+import Button from '~/common/Button';
 
 export interface IState {
 	userName: string;
@@ -12,18 +13,6 @@ export interface IState {
 export interface IProps {
 	onSearch: (search: IState) => void;
 }
-
-const Button = styled.button`
-    border: none;
-    padding: 0.5rem 2rem;
-    text-decoration: none;
-    background: #0069ed;
-    color: #ffffff;
-    cursor: pointer;
-    font-size: 17px;
-    margin: 0;
-    text-align: center;
-`;
 
 const Form = styled.form`
 	width: 100%;

@@ -2,7 +2,7 @@ import { Component } from 'react';
 import * as React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Route, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Container from '~/common/Container';
 import actions from '../actions';
@@ -10,6 +10,7 @@ import { ISSUE_PAGE_ROUTE } from '../constants';
 import IssuesList from './IssuesList';
 import IssuesSearch from './IssuesSearch';
 import Issues from '~/moduleIssue/components/Issues';
+import NotFound from '~/moduleApp/component/NotFound';
 
 export interface IState {
 
@@ -39,13 +40,18 @@ class Router extends Component<IProps & injectProps & injectActions, IState> {
 
 	render() {
 		return (
-			<Container>
+			<Switch>
 				<Route
-					path={ISSUE_PAGE_ROUTE.main}
 					exact
-					render={(props) => <IssuesSearch {...props} onSearch={this.loadingIssues}/>}
+					path={ISSUE_PAGE_ROUTE.main}
+					render={(props) => (
+						<Container>
+							<IssuesSearch {...props} onSearch={this.loadingIssues}/>
+						</Container>
+					)}
 				/>
 				<Route
+					exact
 					path={ISSUE_PAGE_ROUTE.issues}
 					render={(props) => (
 						<Issues
@@ -54,7 +60,8 @@ class Router extends Component<IProps & injectProps & injectActions, IState> {
 						/>
 					)}
 				/>
-			</Container>
+				<Route component={NotFound}/>
+			</Switch>
 		);
 	}
 }
